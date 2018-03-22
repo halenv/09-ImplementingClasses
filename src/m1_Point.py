@@ -49,7 +49,16 @@ class Point(object):
 
     def __repr__(self):
         return 'Point({}, {})'.format(self.x, self.y)
+
+    def clone(self):
+        return Point(self.x, self.y)
+
+    def move_to(self, new_x, new_y):
+        self.x = new_x
+        self.y = new_y
+
     
+
 
 ########################################################################
 # NOTE: For ALL of the methods that you implement, the method is allowed
@@ -195,7 +204,7 @@ def run_test_repr():
         print('Actual for p2:  ', p2)
     """
     # ------------------------------------------------------------------
-    # TODO: 4.  Follow the same instructions as in TO-DO 3 above,
+    # DONE: 4.  Follow the same instructions as in TO-DO 3 above,
     #           but for the  __repr__  method specified above.
     # ------------------------------------------------------------------
     print()
@@ -275,7 +284,7 @@ def run_test_clone():
         print('Actual for p3:  ', p3)
    """
     # ------------------------------------------------------------------
-    # TODO: 5.  Follow the same instructions as in TO-DO 3 above,
+    # DONE: 5.  Follow the same instructions as in TO-DO 3 above,
     #           but for the  clone  method specified above.
     # ------------------------------------------------------------------
     print()
@@ -283,6 +292,41 @@ def run_test_clone():
     print('Testing the   clone   method of the Point class.')
     print('-----------------------------------------------------------')
 
+    p1 = Point(10, 8)
+    print()
+    print('Expected for p1: Point(10, 8)')
+    print('Actual for p1:  ', p1)
+
+    p2 = p1.clone()
+    p3 = p2.clone()
+    print()
+    print('Expected for p1: Point(10, 8)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(10, 8)')
+    print('Actual for p2:  ', p2)
+    print('Expected for p3: Point(10, 8)')
+    print('Actual for p3:  ', p3)
+
+    p1.x = 999
+    print()
+    print('Expected for p1: Point(999, 8)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(10, 8)')
+    print('Actual for p2:  ', p2)
+    print('Expected for p3: Point(10, 8)')
+    print('Actual for p3:  ', p3)
+
+    p1.y = 333
+    p2 = Point(11, 22)
+    p3.x = 777
+    p3.y = 555
+    print()
+    print('Expected for p1: Point(999. 333)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(11, 22)')
+    print('Actual for p2:  ', p2)
+    print('Expected for p3: Point(777, 555)')
+    print('Actual for p3:  ', p3)
 
 def run_test_move_to():
     """
@@ -344,6 +388,35 @@ def run_test_move_to():
     print('Testing the   move_to   method of the Point class.')
     print('-----------------------------------------------------------')
 
+    p1 = Point(10, 8)
+    p2 = Point(50, 20)
+    print()
+    print('Expected for p1: Point(10, 8)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(50, 20)')
+    print('Actual for p2:  ', p2)
+
+    p1.move_to(5, -1)
+    p2.move_to(0, 0)
+    print()
+    print('Expected for p1: Point(5, -1)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(0, 0)')
+    print('Actual for p2:  ', p2)
+
+    p2.y = 99
+    print()
+    print('Expected for p1: Point(5, -1)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(0, 99)')
+    print('Actual for p2:  ', p2)
+
+    check_has_no_return = p2.move_to(0, 222)
+    print()
+    print('Expected for p1: Point(5, -1)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(0, 222)')
+    print('Actual for p2:  ', p2)
 
 def run_test_move_by():
     """
